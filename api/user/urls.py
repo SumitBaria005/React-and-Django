@@ -3,7 +3,7 @@ from . import views
 from django.urls import path, include
 
 router = routers.DefaultRouter()
-router.register(r'', views.UserViewset)
+router.register('', views.UserViewset)
 
 urlpatterns = [
     path('login/', views.signin, name='signin'),

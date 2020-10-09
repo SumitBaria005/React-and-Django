@@ -9,7 +9,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
-        instance = self.Meta.models(**validated_data)
+        instance = self.Meta.model(**validated_data)
 
         if password is not None:
             instance.set_password(password)
@@ -28,7 +28,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
     class Meta:
-        models = CustomUser
+        model = CustomUser
         extra_kwargs = {'password': {'write_only': True}}
-        fiels = ['name', 'email', 'password', 'phone', 'gender',
-                 'is_active', 'is_staff', 'is_superuser']
+        fields = ['name', 'email', 'password', 'phone', 'gender',
+                  'is_active', 'is_staff', 'is_superuser']
